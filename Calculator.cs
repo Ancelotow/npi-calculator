@@ -1,5 +1,6 @@
 ﻿using npi_calculator.extensions;
 using npi_calculator.models;
+using npi_calculator.models.excpetions;
 
 namespace npi_calculator;
 
@@ -41,6 +42,7 @@ public class Calculator
                 _values.Calculate(Operators[value]);
             }
         }
-        return _values.Pop();
+        
+        return _values.GetResult();
     }
 }
