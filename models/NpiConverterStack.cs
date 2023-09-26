@@ -2,9 +2,9 @@
 
 namespace npi_calculator.models;
 
-public class NpiStack : Stack<double>
+public class NpiConverterStack : Stack<string>
 {
-    public void Calculate(Operator op)
+    public void PushOperation(Operator op)
     {
         if (Count < 2)
         {
@@ -12,11 +12,11 @@ public class NpiStack : Stack<double>
         }
         var b = Pop();
         var a = Pop();
-        var result = op.Operation(a, b);
-        Push(result);
+        var operation = op.IsPriority ? $"{a} {op.Symbol} {b}" : $"({a} {op.Symbol} {b})";
+        Push(operation);
     }
-
-    public double GetResult()
+    
+    public string GetResult()
     {
         if (Count > 1)
         {
@@ -26,6 +26,12 @@ public class NpiStack : Stack<double>
         {
             throw new NpiException($"There are no value", NpiExceptionCode.NO_VALUE);
         }
-        return Pop();
+        var result = Pop();
+        if (result[0] == '(' && result.Last() == ')')
+        {
+            result = result.Substring(1, result.Length - 2);
+        }
+
+        return result;
     }
 }
