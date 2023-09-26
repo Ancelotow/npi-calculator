@@ -8,23 +8,26 @@ static class Program
         string operation = "13 12 - 20 26 * *";
         var calculator = new Calculator(operation);
         var converter = new Converter(operation);
-        Console.WriteLine(calculator.Calculate());
-        Console.WriteLine(converter.Convert());
+        Console.WriteLine(operation);
+        Console.WriteLine("Result : " + calculator.Calculate());
+        Console.WriteLine("Algébrique : " + converter.Convert());
         
-        Console.WriteLine("===============================");
+        Console.WriteLine("\n===============================\n");
 
         operation = "230 653748 * 7830 + 5 / 673 -";
         var calculatorBis = new Calculator(operation);
         var converterBis = new Converter(operation);
-        Console.WriteLine(calculatorBis.Calculate());
-        Console.WriteLine(converterBis.Convert());
+        Console.WriteLine(operation);
+        Console.WriteLine("Result : " + calculatorBis.Calculate());
+        Console.WriteLine("Algébrique : " + converterBis.Convert());
 
-        Console.WriteLine("===============================");
+        Console.WriteLine("\n===============================\n");
 
         operation = "3 4 7 + *";
         var calculatorTer = new Calculator(operation);
         var converterTer = new Converter(operation);
-        Console.WriteLine(calculatorTer.Calculate());
-        Console.WriteLine(converterTer.Convert());
+        Console.WriteLine(operation);
+        Console.WriteLine("Result : " + calculatorTer.Calculate());
+        Console.WriteLine("Algébrique : " + converterTer.Convert());
     }
 }
